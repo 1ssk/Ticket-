@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/1ssk/admin/controllers"
 	"github.com/1ssk/admin/initializers"
 	"github.com/gin-gonic/gin"
 )
@@ -16,10 +17,10 @@ func main() {
 
 	Init()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	r.POST("/addTicket", controllers.AddTicket)
+	r.GET("/getAllTicket", controllers.GetAllTicket)
+	r.GET("/getUserTicket/:id", controllers.GetUserTicket)
+	r.DELETE("/deleteUserTicket/:id", controllers.DeleteUserTicket)
+
 	r.Run()
 }
